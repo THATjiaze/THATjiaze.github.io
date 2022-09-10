@@ -1,4 +1,4 @@
-accordion animate-boxaccordion animate-boxaccordion animate-boxaccordion animate-boxaccordion animate-box@font-face {
+@font-face {
 	font-family: "icomoon";
 	src: url("../fonts/icomoon/icomoon.eot?srf3rx");
 	src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix")
@@ -9,7 +9,10 @@ accordion animate-boxaccordion animate-boxaccordion animate-boxaccordion animate
 	font-weight: normal;
 	font-style: normal;
 }
-
+span p {
+	margin: 0;
+	padd: 0;
+}
 * {
 	box-sizing: border-box;
 }
@@ -535,6 +538,7 @@ body.offcanvas .colorlib-nav-toggle {
 
 .colorlib-narrow-content {
 	padding: 0 4.5em;
+	padding-bottom: 4em;
 }
 @media screen and (max-width: 878px) {
 	.colorlib-narrow-content {
@@ -672,7 +676,8 @@ body.offcanvas .colorlib-nav-toggle {
 	padding: 0;
 }
 
-<!-----projectcss------------ > #projects {
+/*<!-----projectcss------------ > */
+#projects {
 	padding: 50px 15px;
 	border-bottom: 1px solid #dcd9d9;
 	text-align: center;
@@ -2162,13 +2167,13 @@ span {
 }
 
 :root {
-	--footer-bg: #f9bf3f;
-	--color: #000;
-	--color-smooth: #000;
-	--input-border: #3a456a;
-	--btn-bg-color: #f1f2fc;
-	--btn-hover-bg: #d5d9f6;
-	--btn-color: #1e2641;
+	footer-bg: #f9bf3f;
+	color: #000;
+	color-smooth: #000;
+	input-border: #3a456a;
+	btn-bg-color: #f1f2fc;
+	btn-hover-bg: #d5d9f6;
+	btn-color: #1e2641;
   }
   
   footer {
@@ -2240,3 +2245,57 @@ span {
     font-weight: 600;
 }
   
+
+
+.Name_Jiaze {
+	font-weight: 900;
+}
+
+.added_footer {
+	background-color: antiquewhite;
+}
+
+span {
+	text-indent: 0em;
+}
+
+.tital_emphasize {
+	text-indent: 0em;;
+	font-size: 25px;
+	font-weight: 900;
+	margin: 0;
+}
+
+.about-desc p {
+/*	color: aquamarine;*/
+}
+
+
+
+.education-university {
+	font-size: 25px;
+	font-weight: 700;
+}
+
+
+
+.education-major {
+	font-size: 17px;
+	color: rgba(0,0,0,1)
+}
+
+#colorlib-main {
+	padding-top: 3em;
+}
+
+
+
+
+
+.h1-background {
+	background-color: rgba(f9,bf,3f);
+	line-height: 1.5em;
+	padding-left: 30px;
+	margin-right: 40px;
+	margin-left: -30px;
+}
