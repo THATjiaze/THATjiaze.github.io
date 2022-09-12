@@ -76,13 +76,13 @@ export default {
 			title: "Languages",
 			skillName: "JavaScript, C++",
 			color: "1",
-			percentage: "100",
+			percentage: "00",
 		},
 		{
 			title: "Frameworks/Libraries",
 			skillName: "Angular, Reactjs",
 			color: "6",
-			percentage: "50",
+			percentage: "5",
 		},
 		{
 			title: "Backend",

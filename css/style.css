@@ -2319,3 +2319,12 @@ span {
 	margin-bottom: 0;
 	margin-top: 35px;
 }
+
+.skills-format {
+	font-size: 17px;
+	color: rgba(0,0,0,1);
+/*	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";*/
+	font-weight: 400;
+	letter-spacing: 10px;
+/*	text-transform: none;*/
+}
