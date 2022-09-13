@@ -8,7 +8,7 @@
 <meta name="description" content="Portfolio webpage of Jiaze Liu" />
 <meta name="keywords"
           content="Biology,Jiaze Liu,Jiaze,Neuroscience,portfolio,website,personal website" />
-<meta name="author" content="Jiaze Liu" />
+<meta name="author" content=" Modified by Jiaze Liu" />
 <!--------------------Social Media icons------------------------>
 <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,13 +32,21 @@
 <!-- Modernizr JS --> 
 <script src="js/modernizr-2.6.2.min.js"></script> 
 <script type="module" src="js/populateHTML.js"></script>
+<link rel="apple-touch-icon" sizes="180x180" href="/Favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/Favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Favicon/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
 <div id="colorlib-page">
-  <div class="container-wrap"> <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"
-                data-toggle="collapse" data-target="#navbar"
-                aria-expanded="false" aria-controls="navbar"><i></i></a> 
+  <div class="container-wrap"> 
+	  <a href="#" 
+		class="js-colorlib-nav-toggle colorlib-nav-toggle"
+		data-toggle="collapse" data-target="#navbar"
+		aria-expanded="false" aria-controls="navbar">
+		  <i></i>
+	  </a> 
     <!--------------------[START] Side Bar-------------------------->
     <aside id="colorlib-aside" role="complementary"
                 class="border js-fullheight no-print">
@@ -88,14 +96,15 @@
         </div>
       </section>
       <!--------------------[END] About me----------------------------> 
-      <!--------------------[START] Skills---------------------------->
+      <!--------------------[START] Education---------------------------->
       <section class="colorlib-skills" data-section="skills">
         <div class="colorlib-narrow-content">
           <div class="row row-bottom-padded-sm animate-box"
                          data-animate-effect="fadeInLeft">
             <div class="about-desc">
               <h1 class="h1-background">Education</h1>
-				<p class="education">
+				<div>
+					<p class="education">
 					
 					<span class="education-university">
 						<strong>Wuhan University,</strong> China 
@@ -107,31 +116,49 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 					<span class="education-time">Sept. 2020-Present</span>
-				</p>
-				<p class="education-major">
-					&nbsp;
-					Hongyi Honor Class, College of Life Science
-					<div id="skills" class="row skills-format"> </div>
-<!--					<div id="skills" class="row skills-format"> </div>-->
-				</p>
+					</p>
+					<p class="education-major">
+						&nbsp;
+						Hongyi Honor Class, College of Life Science
+					</p>
+					<div id="grade" class="row skills-format grade-slider"></div>
+					<div class="strong-bottom-line"></div>
+				</div>
+			  	
+				<div>
+					<div class="language-and-others">
+						<br>
+						<span class="education-university">
+						<strong>Language</strong>
+						</span>
+					</div>
+					
+					<div class="tofel-score">
+						<span class="test-name">TOFEL: 106</span>
+						&nbsp;
+						<span class="total-score">out of 120</span>
+						<div id="tofel-score" class="row grade-slider"></div>
+					</div>
+					
+					<div class="jtest-score">
+						<span class="test-name">J-Test: Rank C</span>
+						&nbsp;
+						<span class="total-score">688 out of 1000 &nbsp;&nbsp; (Japanese)</span>
+					</div>
+					<div class="strong-bottom-line"></div>
+			  	</div>
             </div>
           </div>
-          
-			Hongyi Honor Class, College of Life Science
-          <div id="skills1" class="row"> </div>
-			
-         
-
-        </div>
+          </div>
       </section>
-      <!--------------------[END] Skills------------------------------> 
-      <!--------------------[START] Projects-------------------------->
+      <!--------------------[END] Education------------------------------> 
+      <!--------------------[START] Research-------------------------->
       <section class="colorlib-projects no-print" data-section="projects">
         <div class="colorlib-narrow-content">
           <div class="row row-bottom-padded-sm animate-box"
                          data-animate-effect="fadeInLeft">
             <div class="about-desc">
-              <h1>Projects</h1>
+              <h1 class="h1-background">Research</h1>
             </div>
           </div>
           <ul id="accordion" class="accordion animate-box"
@@ -167,7 +194,7 @@
           </ul>
         </div>
       </section>
-      <!--------------------[END] Projects----------------------------> 
+      <!--------------------[END] Research----------------------------> 
       <!--------------------[START] Blogs----------------------------->
       <section class="colorlib-blogs no-print" data-section="blogs">
         <div class="colorlib-narrow-content">
@@ -177,7 +204,7 @@
               <h1>Latest <span style="color: #f9bf3f">Blogs</span> </h1>
             </div>
           </div>
-          <ul id="accordion" class="accordion animate-box"
+          <ul id="Accordion" class="accordion animate-box"
                          data-animate-effect="fadeInLeft">
             <li class="open">
               <ul id="blogs" class="submenu"
@@ -250,18 +277,18 @@
   </div>
 </div>
 <!-- jQuery --> 
-<script src="js/jquery.min.js"></script> 
+<script src="font/js/jquery.min.js"></script> 
 <!-- jQuery Easing --> 
-<script src="js/jquery.easing.1.3.js"></script> 
+<script src="font/js/jquery.easing.1.3.js"></script> 
 <!-- Bootstrap --> 
-<script src="js/bootstrap.min.js"></script> 
+<script src="font/js/bootstrap.min.js"></script> 
 <!-- Waypoints --> 
-<script src="js/jquery.waypoints.min.js"></script> 
+<script src="font/js/jquery.waypoints.min.js"></script> 
 <!-- Flexslider --> 
-<script src="js/jquery.flexslider-min.js"></script> 
+<script src="font/js/jquery.flexslider-min.js"></script> 
 <!-- Counters --> 
-<script src="js/jquery.countTo.js"></script> 
+<script src="font/js/jquery.countTo.js"></script> 
 <!-- MAIN JS --> 
-<script src="js/main.js"></script>
+<script src="font/js/main.js"></script>
 </body>
 </html>
