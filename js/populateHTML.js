@@ -294,8 +294,9 @@ function getElement(tagName,className) {
 }
 
 
-populateSkills(data.skills, "skills");
-populateSkills(data.skills1, "skills1");
+populateSkills(data.grade, "grade");
+populateSkills(data.tofel, "tofel-score");
+
 
 fetchBlogsFromMedium();
 
