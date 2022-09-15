@@ -8,125 +8,54 @@ export default {
 //				"I love to read, listen to music, and travel.",
 //			],
 //		},
-		contact: {
+	contact: {
 			text: [
 				"If you would like to get in touch with me, be it for exploring a technology, a business, or to just say hi, feel free to send me an email. My email address is: vinaysomawat40@gmail.com",
 			],
 		},
 	},
-	skills: [
+	grade: [
 		{
-			title: "Languages",
-			skillName: "JavaScript, C++",
+			title: "GPA",
+			skillName: "GPA   (3.92/4.00)",
 			color: "1",
+			percentage: "98",
+		},
+		{
+			title: "Ranking",
+			skillName: "Ranking  (1/38)",
+			color: "6",
 			percentage: "100",
-		},
-		{
-			title: "Frameworks/Libraries",
-			skillName: "Angular, Reactjs",
-			color: "6",
-			percentage: "50",
-		},
-		{
-			title: "Backend",
-			skillName: "Nodejs, MongoDB",
-			color: "2",
-			percentage: "40",
-		},
-		{
-			title: "Clouds",
-			skillName: "AWS(EC2, S3), Heroku, Netlify",
-			color: "3",
-			percentage: "30",
-		},
-		{
-			title: "Design",
-			skillName: "HTML, Bootstrap, SCSS",
-			color: "4",
-			percentage: "70",
-		},
-		{
-			title: "Version Control",
-			skillName: "GitHub, JIRA, Trello",
-			color: "7",
-			percentage: "70",
-		},
-		{
-			title: "Tools",
-			skillName: "Postman, Chrome DevTools",
-			color: "3",
-			percentage: "80",
-		},
-		{
-			title: "Saas products",
-			skillName: "CleverTap, FreshDesk",
-			color: "5",
-			percentage: "50",
-		},
-		{
-			title: "Editor",
-			skillName: "VS Code",
-			color: "6",
-			percentage: "70",
 		},
 	],
 	
-	skills1: [
+	tofel: [
 		{
-			title: "Languages",
-			skillName: "JavaScript, C++",
-			color: "1",
-			percentage: "00",
-		},
-		{
-			title: "Frameworks/Libraries",
-			skillName: "Angular, Reactjs",
-			color: "6",
-			percentage: "5",
-		},
-		{
-			title: "Backend",
-			skillName: "Nodejs, MongoDB",
-			color: "2",
-			percentage: "40",
-		},
-		{
-			title: "Clouds",
-			skillName: "AWS(EC2, S3), Heroku, Netlify",
-			color: "3",
-			percentage: "30",
-		},
-		{
-			title: "Design",
-			skillName: "HTML, Bootstrap, SCSS",
-			color: "4",
-			percentage: "70",
-		},
-		{
-			title: "Version Control",
-			skillName: "GitHub, JIRA, Trello",
-			color: "7",
-			percentage: "70",
-		},
-		{
-			title: "Tools",
-			skillName: "Postman, Chrome DevTools",
-			color: "3",
-			percentage: "80",
-		},
-		{
-			title: "Saas products",
-			skillName: "CleverTap, FreshDesk",
+			title: "Reading",
+			skillName: "Reading (30 out of 30)",
 			color: "5",
-			percentage: "50",
+			percentage: "100",
 		},
 		{
-			title: "Editor",
-			skillName: "VS Code",
-			color: "6",
-			percentage: "70",
+			title: "Listening",
+			skillName: "Listening (28 out of 30)",
+			color: "2",
+			percentage: "93.3",
+		},
+		{
+			title: "Speaking",
+			skillName: "Speaking (26 out of 30)",
+			color: "3",
+			percentage: "86.6",
+		},
+		{
+			title: "Writing",
+			skillName: "Writing (22 out of 30)",
+			color: "4",
+			percentage: "73.3",
 		},
 	],
+	
 	projects: {
 		web: [
 			{
