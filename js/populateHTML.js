@@ -17,6 +17,7 @@ function populateSkills(items, id) {
 	let skillsTag = document.getElementById(id);
 	for (let i = 0; i < items.length; i++) {
 		let h3 = getElement('h3',null);
+		h3.className = "h3-font";
 		h3.innerHTML = items[i].skillName;
 
 		let divProgress = getElement('div','progress');

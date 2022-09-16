@@ -17,13 +17,13 @@ export default {
 	grade: [
 		{
 			title: "GPA",
-			skillName: "GPA   (3.92/4.00)",
+			skillName: "<span class='name'>GPA</span><span class='ranking'>(3.92/4.00)</span>",
 			color: "1",
 			percentage: "98",
 		},
 		{
 			title: "Ranking",
-			skillName: "Ranking  (1/38)",
+			skillName: "<span class='name'>Ranking</span><span class='ranking'>(1/38)</span>",
 			color: "6",
 			percentage: "100",
 		},
@@ -32,25 +32,25 @@ export default {
 	tofel: [
 		{
 			title: "Reading",
-			skillName: "Reading (30 out of 30)",
+			skillName: "<span class='name'>Reading</span><span class='ranking'>(30/30)</span>",
 			color: "5",
 			percentage: "100",
 		},
 		{
 			title: "Listening",
-			skillName: "Listening (28 out of 30)",
+			skillName: "<span class='name'>Listening</span><span class='ranking'>(28/30)</span>",
 			color: "2",
 			percentage: "93.3",
 		},
 		{
 			title: "Speaking",
-			skillName: "Speaking (26 out of 30)",
+			skillName: "<span class='name'>Speaking</span><span class='ranking'> 26/30)</span>",
 			color: "3",
 			percentage: "86.6",
 		},
 		{
 			title: "Writing",
-			skillName: "Writing (22 out of 30)",
+			skillName: "<span class='name'>Writing</span><span class='ranking'>(22/30)</span>",
 			color: "4",
 			percentage: "73.3",
 		},
@@ -95,6 +95,78 @@ export default {
 					"<p>1. Generated a few transgenic C. elegans strains deficient in various neurons by the expression of Caspase or miniSOG, and characterized ethanol sensing behavior in those strains, to find out the neuron responsible for ethanal sensing </p>			<p>2. Constructed 6 strains that express ChR-2 or gtACR-2 within specific neuron, to use optogenetics to manipulate neuronal activity, and verify the conclusion that certain neuron does plays a role in ethanal sensing. </p>			<p>3. Constructed 2 strains that express HisCl in different neuron, and performed behavior essay with these strains, and used chemical genetics to verify the role that certain neuron plays in ethanal sensing. </p>			<p>4. Generated two chromosomal knockout strain using CRISPR/Cas9 system that is deficient in two genes that has putative function in ethanal sensing, and performed behavior essay on these strains. To finds out the molecular basis behind ethanal sensing </p>			<p>5. Constructed 8 transgenic strains that express Cmk in certain neuron, for phenotypic rescue that aims to find out the neuron in which calcium related cell signaling leads to ethanol chemosensation.</p>			<p>6. Currently crossing 6 of the 8 strains with another strain that express Gcamp, to be prepared to be used for calcium imaging. </p>			<p>7. Currently trying to obtain one strain that express ChR2 in neuron ASER solely and one strain that co-expresses ChR2 and R-Geco in the same neuron, to use calcium imaging to characterize the response of ChR2 towards blue light, to find out the optimal condition when doing optogenetic experiments. </p>			<p>8. Characterized the influence of temperature on IAA sensing in wild type C. elegans strain</p>",
 				preview: "https://vinaysomawat.github.io/Resume-Builder",
 				techStack: ["HTML", "Bootstrap", "JavaScript"],
+			},
+		],
+		software: [
+			{
+				projectName: "Background",
+				image: "images/pizzaorderchatbot.png",
+				summary:
+					"<p>Cancer has always been a major health threat towards human, and ferroptosis, in addition of being a novel way for the cell to commit suicide, has also been exploited as a new way of cancer treatment. </p>			<p>However, due to different expression levels of pro-ferroptosis and anti-ferroptosis genes, different cancer cells show different sensitivity towards ferroptosis, and thus confers different susceptivity towards treatments targeting this pathway.</p>			<p>Thus, utilizing CRISPR/Cas9, we aim to find out specific protective genes against ferroptosis and investigate their roles, to uncover potential new therapeutic targets and develop novel therapeutic strategies.</p>",
+				preview:
+					"https://github.com/vinaysomawat/Pizza-Ordering-ChatBot",
+				techStack: ["Dailogflow", "Firebase"],
+			},
+			{
+				projectName: "Research",
+				image: "images/whatsappbot.jpg",
+				summary:
+					"<p>Through a CRISPR/Cas9 based genetic screen, my supervisor recently obtained two hits whose malfunction confer the cells higher susceptibility to ferroptosis when induced with RSL-3. </p>			<p>Then, for further verification, we chose to use shRNA to silence the mRNAs of these two genes, during which process I participated in minor tasks such as construction of some shRNA expressing plasmids for transfection, packaging lentivirus, performing transfection, and evaluation of the level of RSL-3 evoked ferroptosis in the knocked down cell strain using resazurin cell activity essays.</p>			<p>Currently, we are testing other ferroptosis inducing drugs on other cell strains to make sure that the two hits we obtained functions the same under different conditions, and my supervisor has recently started another round or screening, in hope of finding genes with a stronger correlation. </p>",
+				preview: "https://github.com/vinaysomawat/WhatsApp-Bot",
+				techStack: ["Selenium", "Chrome Webdriver", "Python"],
+			},
+			{
+				projectName: "Future",
+				image: "images/billgenerator.png",
+				summary:
+					"<p>Our work discovered two potential targets for cancer treatment, offered insight on the correlation of ferroptosis pathway with other metabolites in the cell, such as ATP transportation (which is the function of one of the potential hits obtained in the screen), and has the potential to lead to a better understanding of the pathway of ferroptosis. </p>			<p>Through this work, I not only polished my experimental techniques and research skills, but also learnt that a solid conclusion can only be reached by individually testing the conclusion on different unrelated subjects.</p>			<p>Through this work, I not only polished my experimental techniques and research skills, but also learnt that a solid conclusion can only be reached by individually testing the conclusion on different unrelated subjects.</p>",
+				preview: "https://github.com/vinaysomawat/Bill-Generator",
+				techStack: ["Tkinter", "Openxlpy", "Python"],
+			},
+			{
+				projectName: "My Participation",
+				image: "images/billgenerator.png",
+				summary:
+					"<p>1. Aided in the screening of genes that may participate in the ferroptosis pathway using CRISPR/Cas9</p>			<p>2. Constructed some of the plasmids that are used for the expression of shRNA, to knockdown the genes that was obtained using a CRISPR-Cas9 knockout screen that may play a part in ferroptosis, to verify the conclusion</p>			<p>3. Prepared lentivirus of shRNA to perform knockdown of genes</p>			<p>4. Participated in minor tasks such as cell counting using hemocytometer, to seed cells with shRNA of target genes in the 96-well plate; or to prepare other cell strains to be tested with the same gene (for example, detecting mycoplasma)</p>",
+				preview: "https://github.com/vinaysomawat/Bill-Generator",
+				techStack: ["Tkinter", "Openxlpy", "Python"],
+			},
+		],
+		android: [
+			{
+				projectName: "NITW-CSE",
+				image: "images/nitwcse.jpg",
+				summary:
+					"The Application display details of Department courses, reference books, research, publication and faculty profile.",
+				preview: "https://github.com/vinaysomawat/NITW-CSE",
+				techStack: ["JAVA", "XML", "Android"],
+			},
+			{
+				projectName: "CareerHigh-App",
+				image: "images/carrerhigh.png",
+				summary:
+					"The Application display the webpages of website careerhigh.in in android devices.",
+				preview: "https://github.com/vinaysomawat/CareerHigh-Android",
+				techStack: ["JAVA", "XML", "Android"],
+			},
+		],
+		freelance: [
+			{
+				projectName: "SnylloAir.com",
+				image: "images/snylloair.png",
+				summary:
+					"Developed a company website to showcase the purpose, services and products provided by the company to audience.",
+				preview: "https://www.snylloair.com/",
+				techStack: ["Bootstrap", "JavaScript", "AWS-S3"],
+			},
+			{
+				projectName: "Delivery+",
+				image: "images/AM-Logo-.png",
+				summary:
+					"Android Application to display website in android devices.",
+				preview:
+					"https://play.google.com/store/apps/details?id=com.americanmarket.americanmarketandroid",
+				techStack: ["Android", "JAVA", "Play Store"],
 			},
 		],
 		software: [
