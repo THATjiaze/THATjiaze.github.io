@@ -713,7 +713,11 @@ body.offcanvas .colorlib-nav-toggle {
 }
 
 .project-card {
-	height: 150px;
+/*	height: 150px;*/
+}
+
+.badge-secondary {
+	display: none;
 }
 
 .project-info {
@@ -2104,16 +2108,18 @@ ul {
 }
 
 .project-heading {
-	font-weight: 500;
-	margin-bottom: 10px;
+	font-weight: 900;
+	font-size: 20px;
+	margin-bottom: 20px;
 	color: #000;
 }
 
 .project-description {
 	font-size: 13px;
 	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 0px;
 	color: #000;
+	text-indent: 2em;
 }
 
 .img-fluid {
@@ -2391,5 +2397,5 @@ span {
 
 .research-location {
 	text-align: end;
-	color: rgba(0,0,0,0.50)
+	color: rgba(0,0,0,0.25)
 }
