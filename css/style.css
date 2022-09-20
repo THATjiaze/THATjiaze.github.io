@@ -30,6 +30,8 @@ span p {
 	color: white;
   }
 
+
+
 /* =======================================================
 *
 * 	Template Style 
@@ -180,7 +182,7 @@ figure figcaption {
 }
 #colorlib-aside .author-img {
 	width: 150px;
-	height: 150px;
+	height: 200px;
 	margin: 0 auto;
 	margin-bottom: 30px;
 	-webkit-border-radius: 50%;
@@ -232,7 +234,7 @@ figure figcaption {
 }
 @media screen and (max-width: 768px) {
 	#colorlib-aside #colorlib-main-menu ul {
-		margin: 0 0 2em 0;
+		margin: 0 2em 2em 2em;
 	}
 }
 #colorlib-aside #colorlib-main-menu ul li {
@@ -363,6 +365,7 @@ figure figcaption {
 	-webkit-transition: 0.5s;
 	-o-transition: 0.5s;
 	transition: 0.5s;
+	padding: 0 1em 0 1em;
 }
 @media screen and (max-width: 768px) {
 	#colorlib-main {
@@ -2456,6 +2459,4 @@ span {
 	height: 15px;
 }
 
-#dark-mode {
-	
-}
+
