@@ -132,6 +132,24 @@ export default {
 				techStack: ["Tkinter", "Openxlpy", "Python"],
 			},
 		],
+		iGEM: [
+			{
+				projectName: "Acne Treatment",
+				image: "https://2021.igem.org/Team:WHU-China/",
+				summary:
+					"<p>We are proud to introduce our project Acneraser, a safe, efficient and novel acne therapy. Using Escherichia coli as the chassis, we designed an engineering bacterium that can simultaneously secrete β-oxidation related enzymes and bacteriocin to inhibit and kill propionibacterium acnes. We will construct nutritionally deficient engineered bacteria to ensure safety.We hope that our project will provide new ideas for acne treatment and also promote engineered probiotics to play a greater role in the field of medical beauty, letting this promising and exciting scientific field change our lives from the very tiny things around us all.</p>			<p>For more information please click on this text or visit https://2021.igem.org/Team:WHU-China#page1</p>",
+				preview: "https://2021.igem.org/Team:WHU-China#page1",
+				techStack: ["Dailogflow", "Firebase"],
+			},
+			{
+				projectName: "Major Depressive Disorder Treatment",
+				image: "https://2022.igem.wiki/whu-china/",
+				summary:
+					"<p>Depression is a very common but serious mental disorder in modern society. Patients may suffer from the persistence of sad mood, anxiety, irritability, difficulty concentrating, loss of interest and even develop aches or pains without clear physical cause. We explored the possibility to engineer probiotics to deliver natural antidepressants SAMe in the gut.  Although SAMe is generally considered safe, we still wanted to mimic normal drug uptake patterns, in which the drug was taken at intervals rather than continuously. Therefore, we introduced an oscillator module to achieve periodic SAMe secretion. We would wish the engineered bacteria to colonize the gut, and secrete SAMe periodically, to achieve curing effect.</p>						<p>For more information please click on this text or visit https://2022.igem.wiki/whu-china/</p>",
+				preview: "https://2022.igem.wiki/whu-china/",
+				techStack: ["Selenium", "Chrome Webdriver", "Python"],
+			},
+		],
 		android: [
 			{
 				projectName: "NITW-CSE",

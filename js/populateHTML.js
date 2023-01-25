@@ -303,6 +303,7 @@ fetchBlogsFromMedium();
 
 populateProjects(data.projects.web, "web-projects");
 populateProjects(data.projects.software, "software-projects");
+populateProjects(data.projects.iGEM, "iGEM-project");
 populateProjects(data.projects.android, "android-projects");
 populateProjects(data.projects.freelance, "freelance-projects");
 
