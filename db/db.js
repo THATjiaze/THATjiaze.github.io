@@ -137,7 +137,7 @@ export default {
 				projectName: "Acne Treatment",
 				image: "https://2021.igem.org/Team:WHU-China/",
 				summary:
-					"<p>We are proud to introduce our project Acneraser, a safe, efficient and novel acne therapy. Using Escherichia coli as the chassis, we designed an engineering bacterium that can simultaneously secrete β-oxidation related enzymes and bacteriocin to inhibit and kill propionibacterium acnes. We will construct nutritionally deficient engineered bacteria to ensure safety.We hope that our project will provide new ideas for acne treatment and also promote engineered probiotics to play a greater role in the field of medical beauty, letting this promising and exciting scientific field change our lives from the very tiny things around us all.</p>			<p>For more information please click on this text or visit https://2021.igem.org/Team:WHU-China#page1</p>",
+					"<p>Taking the wide-spread suffering of skin diseases and the lack of current one-and for-all solution into view, we tried to assemble a bioengineered bacteria that can break down fatty acid, kill Propionibacterium acnes (which is the believed cause of acne), and serve as a cure for acne. In this project, I performed directed evolution on a fatty acid sensitive promoter, that would serve as part of the sensing mechanism for our engineered bacteria to detect the presence of fatty acid (and thus the need to execute the process of fatty acid degradation).</p>			<p>For more information please click on this text or visit https://2021.igem.org/Team:WHU-China#page1</p>",
 				preview: "https://2021.igem.org/Team:WHU-China#page1",
 				techStack: ["Dailogflow", "Firebase"],
 			},
