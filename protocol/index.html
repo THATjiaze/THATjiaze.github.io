@@ -27,144 +27,162 @@
     .warn{color:#ffd1d1}
     a{color:var(--accent)}
     footer{max-width:980px;margin:24px auto;padding:0 20px;color:var(--muted);font-size:13px}
+    /* simple gate layout */
+    .gate{max-width:520px;margin:32px auto;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--panel)}
+    .gate input{width:70%;padding:10px;border-radius:8px;border:1px solid var(--border);background:#0c0f13;color:var(--text)}
+    .gate button{margin-left:8px;padding:10px 14px;border:0;border-radius:8px;background:var(--accent);color:#061019;cursor:pointer}
   </style>
 </head>
 <body>
-<header>
-  <h1>Quick Protocols <span class="tag">personal cheatsheet</span></h1>
-  <div class="subtitle">Handy transfer commands for negative stain &amp; cryo-EM workflow • Copy &amp; paste ready</div>
-</header>
 
-<main>
+  <!-- PASSWORD GATE -->
+  <div class="gate" id="gate">
+    <h1>Protocols (protected)</h1>
+    <form id="gate-form">
+      <input type="password" id="pw" placeholder="Enter password" required />
+      <button type="submit">Enter</button>
+      <p style="color:#98a2b3;font-size:12px;margin-top:8px">
+        Note: client-side gate; not truly secure for secrets.
+      </p>
+    </form>
+  </div>
 
-  <section id="neg-stain">
-    <h2>Negative-stain Data Transfer (NAS server)</h2>
-    <ol>
-      <li>Press <kbd>⌘</kbd><kbd>K</kbd> (Connect to Server) in Finder.</li>
-      <li>Enter <code>smb://10.66.5.71</code> → Connect.</li>
-      <li>Select the share: <strong>Transfer</strong>.</li>
-    </ol>
-  </section>
+  <!-- HIDDEN CONTENT -->
+  <div id="content" hidden>
+    <header>
+      <h1>Quick Protocols <span class="tag">personal cheatsheet</span></h1>
+      <div class="subtitle">Handy transfer commands for negative stain &amp; cryo-EM workflow • Copy &amp; paste ready</div>
+    </header>
 
-  <section id="cluster-transfer">
-    <h2>Cryo-EM Data Transfer &rarr; Local (via YCRC transfer node)</h2>
-    <ol>
-      <li>Open Terminal and SSH to the transfer node (Duo option <strong>1</strong>):</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c1">Copy</button>
-      <pre id="c1"><code>ssh jl4264@transfer-mccleary.ycrc.yale.edu
+    <main>
+      <section id="neg-stain">
+        <h2>Negative-stain Data Transfer (NAS server)</h2>
+        <ol>
+          <li>Press <kbd>⌘</kbd><kbd>K</kbd> (Connect to Server) in Finder.</li>
+          <li>Enter <code>smb://10.66.5.71</code> → Connect.</li>
+          <li>Select the share: <strong>Transfer</strong>.</li>
+        </ol>
+      </section>
+
+      <section id="cluster-transfer">
+        <h2>Cryo-EM Data Transfer → Local (via YCRC transfer node)</h2>
+        <ol>
+          <li>Open Terminal and SSH (Duo option <strong>1</strong>):</li>
+        </ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c1">Copy</button>
+<pre id="c1"><code>ssh jl4264@transfer-mccleary.ycrc.yale.edu
 # choose: 1  (Duo push)</code></pre>
-    </div>
-    <ol start="2">
-      <li>Navigate and find the session directory:</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c2">Copy</button>
-      <pre id="c2"><code>cd /gpfs/gibbs/pi/cryoem/GlaciosYSB/
+        </div>
+        <ol start="2"><li>Navigate and find the session directory:</li></ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c2">Copy</button>
+<pre id="c2"><code>cd /gpfs/gibbs/pi/cryoem/GlaciosYSB/
 ls</code></pre>
-    </div>
-    <ol start="3">
-      <li>Transfer the whole directory to OneDrive (edit paths as needed):</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c3">Copy</button>
-      <pre id="c3"><code>scp -r 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/20251012_JL' \
+        </div>
+        <ol start="3"><li>Transfer the whole directory to OneDrive:</li></ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c3">Copy</button>
+<pre id="c3"><code>scp -r 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/20251012_JL' \
 "/Users/thatjiaze/Library/CloudStorage/OneDrive-YaleUniversity/Ferguson Lab/WOP/251012 screening on FL-EGFR TGFa 13A9 ligand at 1_2x excess/"</code></pre>
-    </div>
-    <p class="note">Tip: for very large trees use <code>rsync -av --partial --progress</code> instead of <code>scp</code> to resume interrupted copies.</p>
-  </section>
+        </div>
+        <p class="note">Tip: for huge trees use <code>rsync -av --partial --progress</code> instead of <code>scp</code>.</p>
+      </section>
 
-  <section id="on-scope-transfer">
-    <h2>Cryo-EM Collection &rarr; External Drive (on microscope workstation)</h2>
-    <ol>
-      <li>Eject previous drive &amp; mount a new one. In Linux Disks, format as <strong>Ext4</strong> (“Internal disk for use with Linux systems only”).</li>
-      <li>SSH to the workstation:</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c4">Copy</button>
-      <pre id="c4"><code>ssh spuser@10.26.0.125
-# password: &lt;YOUR_PASSWORD&gt;   <!-- do not publish real passwords --></code></pre>
-    </div>
-    <ol start="3">
-      <li>Go to root, then to the mounted drive (last segment e.g. <code>jiaze-01</code> may differ):</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c5">Copy</button>
-      <pre id="c5"><code>cd /
+      <section id="on-scope-transfer">
+        <h2>Cryo-EM Collection → External Drive (workstation)</h2>
+        <ol>
+          <li>Eject previous drive; mount new drive and format as <strong>Ext4</strong>.</li>
+          <li>SSH to the workstation:</li>
+        </ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c4">Copy</button>
+<pre id="c4"><code>ssh spuser@10.26.0.125
+# password: &lt;YOUR_PASSWORD&gt;</code></pre>
+        </div>
+        <ol start="3"><li>Go to the mounted drive (last segment varies):</li></ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c5">Copy</button>
+<pre id="c5"><code>cd /
 cd media/spuser/jiaze-01/</code></pre>
-    </div>
-    <ol start="4">
-      <li>Create a session folder and pull data from the cluster:</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c6">Copy</button>
-      <pre id="c6"><code>mkdir flEGFR_13A9_1_2xTGFa
+        </div>
+        <ol start="4"><li>Create session folder and pull from cluster:</li></ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c6">Copy</button>
+<pre id="c6"><code>mkdir flEGFR_13A9_1_2xTGFa
 cd flEGFR_13A9_1_2xTGFa/
 
-# Retrieve raw TIFFs from mccleary via rsync (size-only to speed re-runs):
+# Retrieve raw TIFFs:
 rsync -av --progress --size-only mccleary:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/rawTIFF/* ./</code></pre>
-    </div>
-  </section>
+        </div>
+      </section>
 
-  <section id="gainref">
-    <h2>Gain Reference: Download, Convert, and Push to Workstation</h2>
-    <ol>
-      <li>Create a temp folder and **download** all <code>.dm4</code> gain references:</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c7">Copy</button>
-      <pre id="c7"><code>mkdir -p ~/Downloads/temp
+      <section id="gainref">
+        <h2>Gain Reference: Download → Convert → Push</h2>
+        <ol><li>Create temp folder and download all <code>.dm4</code> gainrefs:</li></ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c7">Copy</button>
+<pre id="c7"><code>mkdir -p ~/Downloads/temp
 scp 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/rawTIFF/*.dm4' \
   ~/Downloads/temp/</code></pre>
-    </div>
-    <ol start="2">
-      <li>Convert a specific <code>.dm4</code> to <code>.mrc</code> (requires <strong>IMOD</strong>):</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c8">Copy</button>
-      <pre id="c8"><code>dm2mrc ~/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.dm4 \
+        </div>
+        <ol start="2"><li>Convert a specific <code>.dm4</code> to <code>.mrc</code> (IMOD):</li></ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c8">Copy</button>
+<pre id="c8"><code>dm2mrc ~/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.dm4 \
        ~/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.mrc</code></pre>
-    </div>
-    <ol start="3">
-      <li>Send the converted file to the workstation (CryoSPARC project):</li>
-    </ol>
-    <div class="codewrap">
-      <button class="copy" data-copy="#c9">Copy</button>
-      <pre id="c9"><code>rsync -av --progress --partial \
+        </div>
+        <ol start="3"><li>Send the converted file to the workstation:</li></ol>
+        <div class="codewrap">
+          <button class="copy" data-copy="#c9">Copy</button>
+<pre id="c9"><code>rsync -av --progress --partial \
   "/Users/thatjiaze/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.mrc" \
   spuser@10.26.0.125:/data/cryosparc_project/CS-jiaze-fl-egfr-gfp-negativestain/</code></pre>
-    </div>
-    <p class="note">Alt: use <code>sftp</code> if <code>rsync</code>/<code>scp</code> is blocked.</p>
-  </section>
+        </div>
+      </section>
 
-  <section>
-    <h2>Prerequisites &amp; Notes</h2>
-    <ul>
-      <li>Have <strong>ssh/scp/rsync</strong> and <strong>IMOD</strong> (<code>dm2mrc</code>) installed on your Mac.</li>
-      <li>Paths and session names (e.g., <code>251012_JL</code>) are examples—edit per run.</li>
-      <li class="warn">Never publish real passwords on the web. Use placeholders or a password manager.</li>
-    </ul>
-  </section>
+      <section>
+        <h2>Prerequisites &amp;. Notes</h2>
+        <ul>
+          <li>Have <strong>ssh/scp/rsync</strong> and <strong>IMOD</strong> (<code>dm2mrc</code>) installed.</li>
+          <li>Edit paths/session names per run.</li>
+          <li class="warn">Never publish real passwords on the web.</li>
+        </ul>
+      </section>
+    </main>
 
-</main>
+    <footer>© <span id="y"></span> Jiaze Liu • Personal quick-reference.</footer>
+  </div>
 
-<footer>
-  © <span id="y"></span> Jiaze Liu • This page is a personal quick-reference. Use responsibly on your network.
-</footer>
-
-<script>
-  document.querySelectorAll('.copy').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const target = document.querySelector(btn.dataset.copy);
-      const text = target.innerText;
-      navigator.clipboard.writeText(text).then(()=>{
-        const old = btn.textContent; btn.textContent = 'Copied ✓';
-        setTimeout(()=>btn.textContent=old, 1100);
+  <script>
+    // copy buttons
+    document.addEventListener('click', (e)=>{
+      if(!e.target.matches('.copy')) return;
+      const target = document.querySelector(e.target.dataset.copy);
+      navigator.clipboard.writeText(target.innerText).then(()=>{
+        const old=e.target.textContent; e.target.textContent='Copied ✓';
+        setTimeout(()=>e.target.textContent=old,1100);
       });
     });
-  });
-  document.getElementById('y').textContent = new Date().getFullYear();
-</script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // --- Password gate ---
+    // Example hash for password "Jiazeliu1" (change this!):
+    const HASH = "fd2397a6e63e3d17bff8aae2551827be64d8cb8e61ccfcdec5c825de59b40253";
+
+    async function sha256(s){
+      const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+      return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('');
+    }
+    const form = document.getElementById('gate-form');
+    const gate = document.getElementById('gate');
+    const content = document.getElementById('content');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const ok = await sha256(document.getElementById('pw').value) === HASH;
+      if(ok){ gate.remove(); content.hidden = false; }
+      else { alert('Wrong password'); }
+    });
+  </script>
 </body>
 </html>
