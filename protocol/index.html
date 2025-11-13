@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quick Protocols | Jiaze Liu</title>
+  <style>
+    :root{
+      --bg:#0f1216; --panel:#151a22; --text:#e8eef6; --muted:#96a3b8;
+      --accent:#69d2ff; --accent2:#8be38b; --code:#0c0f13; --border:#263041;
+    }
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;line-height:1.45}
+    header{padding:32px 20px 10px;max-width:980px;margin:auto}
+    h1{margin:0 0 6px;font-size:28px}
+    .subtitle{color:var(--muted);font-size:14px}
+    main{max-width:980px;margin:10px auto 64px;padding:0 20px;display:grid;gap:18px}
+    section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 16px}
+    h2{margin:0 0 10px;font-size:20px}
+    ol,ul{margin:8px 0 0 18px}
+    kbd{background:#111827;border:1px solid #374151;border-bottom-width:2px;border-radius:6px;padding:2px 6px;font:600 12px ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;color:#f9fafb}
+    .codewrap{position:relative;margin-top:12px}
+    pre{margin:0;background:var(--code);border:1px solid var(--border);border-radius:10px;padding:12px;overflow:auto}
+    code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;color:#e7edf7}
+    .copy{position:absolute;top:8px;right:8px;font-size:12px;color:#061019;background:var(--accent);border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
+    .tag{display:inline-block;font-size:12px;color:#061019;background:var(--accent2);padding:2px 8px;border-radius:999px;margin-left:6px}
+    .note{color:var(--muted);font-size:13px;margin-top:8px}
+    .warn{color:#ffd1d1}
+    a{color:var(--accent)}
+    footer{max-width:980px;margin:24px auto;padding:0 20px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Quick Protocols <span class="tag">personal cheatsheet</span></h1>
+  <div class="subtitle">Handy transfer commands for negative stain &amp; cryo-EM workflow • Copy &amp; paste ready</div>
+</header>
+
+<main>
+
+  <section id="neg-stain">
+    <h2>Negative-stain Data Transfer (NAS server)</h2>
+    <ol>
+      <li>Press <kbd>⌘</kbd><kbd>K</kbd> (Connect to Server) in Finder.</li>
+      <li>Enter <code>smb://10.66.5.71</code> → Connect.</li>
+      <li>Select the share: <strong>Transfer</strong>.</li>
+    </ol>
+  </section>
+
+  <section id="cluster-transfer">
+    <h2>Cryo-EM Data Transfer &rarr; Local (via YCRC transfer node)</h2>
+    <ol>
+      <li>Open Terminal and SSH to the transfer node (Duo option <strong>1</strong>):</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c1">Copy</button>
+      <pre id="c1"><code>ssh jl4264@transfer-mccleary.ycrc.yale.edu
+# choose: 1  (Duo push)</code></pre>
+    </div>
+    <ol start="2">
+      <li>Navigate and find the session directory:</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c2">Copy</button>
+      <pre id="c2"><code>cd /gpfs/gibbs/pi/cryoem/GlaciosYSB/
+ls</code></pre>
+    </div>
+    <ol start="3">
+      <li>Transfer the whole directory to OneDrive (edit paths as needed):</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c3">Copy</button>
+      <pre id="c3"><code>scp -r 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/20251012_JL' \
+"/Users/thatjiaze/Library/CloudStorage/OneDrive-YaleUniversity/Ferguson Lab/WOP/251012 screening on FL-EGFR TGFa 13A9 ligand at 1_2x excess/"</code></pre>
+    </div>
+    <p class="note">Tip: for very large trees use <code>rsync -av --partial --progress</code> instead of <code>scp</code> to resume interrupted copies.</p>
+  </section>
+
+  <section id="on-scope-transfer">
+    <h2>Cryo-EM Collection &rarr; External Drive (on microscope workstation)</h2>
+    <ol>
+      <li>Eject previous drive &amp; mount a new one. In Linux Disks, format as <strong>Ext4</strong> (“Internal disk for use with Linux systems only”).</li>
+      <li>SSH to the workstation:</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c4">Copy</button>
+      <pre id="c4"><code>ssh spuser@10.26.0.125
+# password: &lt;YOUR_PASSWORD&gt;   <!-- do not publish real passwords --></code></pre>
+    </div>
+    <ol start="3">
+      <li>Go to root, then to the mounted drive (last segment e.g. <code>jiaze-01</code> may differ):</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c5">Copy</button>
+      <pre id="c5"><code>cd /
+cd media/spuser/jiaze-01/</code></pre>
+    </div>
+    <ol start="4">
+      <li>Create a session folder and pull data from the cluster:</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c6">Copy</button>
+      <pre id="c6"><code>mkdir flEGFR_13A9_1_2xTGFa
+cd flEGFR_13A9_1_2xTGFa/
+
+# Retrieve raw TIFFs from mccleary via rsync (size-only to speed re-runs):
+rsync -av --progress --size-only mccleary:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/rawTIFF/* ./</code></pre>
+    </div>
+  </section>
+
+  <section id="gainref">
+    <h2>Gain Reference: Download, Convert, and Push to Workstation</h2>
+    <ol>
+      <li>Create a temp folder and **download** all <code>.dm4</code> gain references:</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c7">Copy</button>
+      <pre id="c7"><code>mkdir -p ~/Downloads/temp
+scp 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/rawTIFF/*.dm4' \
+  ~/Downloads/temp/</code></pre>
+    </div>
+    <ol start="2">
+      <li>Convert a specific <code>.dm4</code> to <code>.mrc</code> (requires <strong>IMOD</strong>):</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c8">Copy</button>
+      <pre id="c8"><code>dm2mrc ~/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.dm4 \
+       ~/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.mrc</code></pre>
+    </div>
+    <ol start="3">
+      <li>Send the converted file to the workstation (CryoSPARC project):</li>
+    </ol>
+    <div class="codewrap">
+      <button class="copy" data-copy="#c9">Copy</button>
+      <pre id="c9"><code>rsync -av --progress --partial \
+  "/Users/thatjiaze/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.mrc" \
+  spuser@10.26.0.125:/data/cryosparc_project/CS-jiaze-fl-egfr-gfp-negativestain/</code></pre>
+    </div>
+    <p class="note">Alt: use <code>sftp</code> if <code>rsync</code>/<code>scp</code> is blocked.</p>
+  </section>
+
+  <section>
+    <h2>Prerequisites &amp; Notes</h2>
+    <ul>
+      <li>Have <strong>ssh/scp/rsync</strong> and <strong>IMOD</strong> (<code>dm2mrc</code>) installed on your Mac.</li>
+      <li>Paths and session names (e.g., <code>251012_JL</code>) are examples—edit per run.</li>
+      <li class="warn">Never publish real passwords on the web. Use placeholders or a password manager.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="y"></span> Jiaze Liu • This page is a personal quick-reference. Use responsibly on your network.
+</footer>
+
+<script>
+  document.querySelectorAll('.copy').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = document.querySelector(btn.dataset.copy);
+      const text = target.innerText;
+      navigator.clipboard.writeText(text).then(()=>{
+        const old = btn.textContent; btn.textContent = 'Copied ✓';
+        setTimeout(()=>btn.textContent=old, 1100);
+      });
+    });
+  });
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
