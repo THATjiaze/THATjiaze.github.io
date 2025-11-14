@@ -4,34 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Quick Protocols | Jiaze Liu</title>
-  <style>
-    :root{
-      --bg:#0f1216; --panel:#151a22; --text:#e8eef6; --muted:#96a3b8;
-      --accent:#69d2ff; --accent2:#8be38b; --code:#0c0f13; --border:#263041;
-    }
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;line-height:1.45}
-    header{padding:32px 20px 10px;max-width:980px;margin:auto}
-    h1{margin:0 0 6px;font-size:28px}
-    .subtitle{color:var(--muted);font-size:14px}
-    main{max-width:980px;margin:10px auto 64px;padding:0 20px;display:grid;gap:18px}
-    section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 16px}
-    h2{margin:0 0 10px;font-size:20px}
-    ol,ul{margin:8px 0 0 18px}
-    kbd{background:#111827;border:1px solid #374151;border-bottom-width:2px;border-radius:6px;padding:2px 6px;font:600 12px ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;color:#f9fafb}
-    .codewrap{position:relative;margin-top:12px}
-    pre{margin:0;background:var(--code);border:1px solid var(--border);border-radius:10px;padding:12px;overflow:auto}
-    code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;color:#e7edf7}
-    .copy{position:absolute;top:8px;right:8px;font-size:12px;color:#061019;background:var(--accent);border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
-    .tag{display:inline-block;font-size:12px;color:#061019;background:var(--accent2);padding:2px 8px;border-radius:999px;margin-left:6px}
-    .note{color:var(--muted);font-size:13px;margin-top:8px}
-    .warn{color:#ffd1d1}
-    a{color:var(--accent)}
-    footer{max-width:980px;margin:24px auto;padding:0 20px;color:var(--muted);font-size:13px}
-    /* simple gate layout */
-    .gate{max-width:520px;margin:32px auto;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--panel)}
-    .gate input{width:70%;padding:10px;border-radius:8px;border:1px solid var(--border);background:#0c0f13;color:var(--text)}
-    .gate button{margin-left:8px;padding:10px 14px;border:0;border-radius:8px;background:var(--accent);color:#061019;cursor:pointer}
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -41,9 +15,7 @@
     <form id="gate-form">
       <input type="password" id="pw" placeholder="Enter password" required />
       <button type="submit">Enter</button>
-      <p style="color:#98a2b3;font-size:12px;margin-top:8px">
-        Note: client-side gate; not truly secure for secrets.
-      </p>
+      <p class="muted small">Client-side gate only — not suitable for secrets.</p>
     </form>
   </div>
 
@@ -66,9 +38,7 @@
 
       <section id="cluster-transfer">
         <h2>Cryo-EM Data Transfer → Local (via YCRC transfer node)</h2>
-        <ol>
-          <li>Open Terminal and SSH (Duo option <strong>1</strong>):</li>
-        </ol>
+        <ol><li>Open Terminal and SSH (Duo option <strong>1</strong>):</li></ol>
         <div class="codewrap">
           <button class="copy" data-copy="#c1">Copy</button>
 <pre id="c1"><code>ssh jl4264@transfer-mccleary.ycrc.yale.edu
@@ -142,7 +112,7 @@ scp 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251
       </section>
 
       <section>
-        <h2>Prerequisites &amp;. Notes</h2>
+        <h2>Prerequisites &amp; Notes</h2>
         <ul>
           <li>Have <strong>ssh/scp/rsync</strong> and <strong>IMOD</strong> (<code>dm2mrc</code>) installed.</li>
           <li>Edit paths/session names per run.</li>
@@ -153,36 +123,5 @@ scp 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251
 
     <footer>© <span id="y"></span> Jiaze Liu • Personal quick-reference.</footer>
   </div>
-
-  <script>
-    // copy buttons
-    document.addEventListener('click', (e)=>{
-      if(!e.target.matches('.copy')) return;
-      const target = document.querySelector(e.target.dataset.copy);
-      navigator.clipboard.writeText(target.innerText).then(()=>{
-        const old=e.target.textContent; e.target.textContent='Copied ✓';
-        setTimeout(()=>e.target.textContent=old,1100);
-      });
-    });
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // --- Password gate ---
-    // Example hash for password "Jiazeliu1" (change this!):
-    const HASH = "fd2397a6e63e3d17bff8aae2551827be64d8cb8e61ccfcdec5c825de59b40253";
-
-    async function sha256(s){
-      const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
-      return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('');
-    }
-    const form = document.getElementById('gate-form');
-    const gate = document.getElementById('gate');
-    const content = document.getElementById('content');
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const ok = await sha256(document.getElementById('pw').value) === HASH;
-      if(ok){ gate.remove(); content.hidden = false; }
-      else { alert('Wrong password'); }
-    });
-  </script>
 </body>
 </html>
