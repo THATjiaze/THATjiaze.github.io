@@ -9,116 +9,199 @@
 </head>
 <body>
 
+	
   <!-- PASSWORD GATE -->
   <div class="gate" id="gate">
     <h1>Protocols (protected)</h1>
     <form id="gate-form">
       <input type="password" id="pw" placeholder="Enter password" required />
       <button type="submit">Enter</button>
-      <p class="muted small">Client-side gate only — not suitable for secrets.</p>
     </form>
   </div>
 
+	
+	
   <!-- HIDDEN CONTENT -->
   <div id="content" hidden>
     <header>
       <h1>Quick Protocols <span class="tag">personal cheatsheet</span></h1>
-      <div class="subtitle">Handy transfer commands for negative stain &amp; cryo-EM workflow • Copy &amp; paste ready</div>
+      <div class="subtitle">
+        Handy transfer commands for negative stain &amp; cryo-EM workflow • Copy &amp; paste ready
+      </div>
     </header>
 
-    <main>
-      <section id="neg-stain">
-        <h2>Negative-stain Data Transfer (NAS server)</h2>
-        <ol>
-          <li>Press <kbd>⌘</kbd><kbd>K</kbd> (Connect to Server) in Finder.</li>
-          <li>Enter <code>smb://10.66.5.71</code> → Connect.</li>
-          <li>Select the share: <strong>Transfer</strong>.</li>
-        </ol>
-      </section>
+        <main>
+      <!-- TWO-COLUMN LAYOUT: LEFT = INDEX / NAV, RIGHT = PANELS -->
+      <div class="tabs-layout" id="protocol-tabs">
+        <!-- LEFT SIDEBAR: INDEX / LINKS -->
+        <nav class="tab-nav" aria-label="Quick protocol index">
+          <div class="tab-nav-heading">Index</div>
+          <a href="#index" class="tab-link">Overview</a>
+          <a href="#neg-stain" class="tab-link">Negative-stain transfer</a>
+          <a href="#cluster-transfer" class="tab-link">Cluster → Local</a>
+          <a href="#on-scope-transfer" class="tab-link">Collection → Drive</a>
+          <a href="#gainref" class="tab-link">Gain reference</a>
+          <a href="#prereqs-notes" class="tab-link">Prereqs &amp; notes</a>
+        </nav>
 
-      <section id="cluster-transfer">
-        <h2>Cryo-EM Data Transfer → Local (via YCRC transfer node)</h2>
-        <ol><li>Open Terminal and SSH (Duo option <strong>1</strong>):</li></ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c1">Copy</button>
+        <!-- RIGHT SIDE: PANELS / SECTIONS -->
+        <div class="tab-panels">
+
+          <!-- INDEX PANEL -->
+          <section id="index" class="tab-panel">
+            <h2>Quick index</h2>
+            <ul class="index-list">
+              <li>
+                <a href="#neg-stain">Negative-stain data transfer (NAS server)</a>
+                <span class="index-note">Connect via Finder → SMB share to the Transfer volume.</span>
+              </li>
+              <li>
+                <a href="#cluster-transfer">Cryo-EM data transfer → Local (YCRC transfer node)</a>
+                <span class="index-note">SSH to transfer node, navigate session dir, copy to OneDrive.</span>
+              </li>
+              <li>
+                <a href="#on-scope-transfer">Cryo-EM collection → External drive (workstation)</a>
+                <span class="index-note">Mount Ext4 drive, SSH to workstation, pull raw TIFFs.</span>
+              </li>
+              <li>
+                <a href="#gainref">Gain reference: download → convert → push</a>
+                <span class="index-note">Grab <code>.dm4</code>, convert with <code>dm2mrc</code>, rsync to workstation.</span>
+              </li>
+              <li>
+                <a href="#prereqs-notes">Prereqs &amp; notes</a>
+                <span class="index-note">Tools installed, path edits, and safety reminders.</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- NEGATIVE STAIN PANEL -->
+          <section id="neg-stain" class="tab-panel">
+            <h2>Negative-stain Data Transfer (NAS server)</h2>
+            <ol>
+              <li>Press <kbd>⌘</kbd><kbd>K</kbd> (Connect to Server) in Finder.</li>
+              <li>Enter <code>smb://10.66.5.71</code> → Connect.</li>
+              <li>Select the share: <strong>Transfer</strong>.</li>
+            </ol>
+          </section>
+
+          <!-- CLUSTER → LOCAL PANEL -->
+          <section id="cluster-transfer" class="tab-panel">
+            <h2>Cryo-EM Data Transfer → Local (via YCRC transfer node)</h2>
+
+            <ol>
+              <li>Open Terminal and SSH (Duo option <strong>1</strong>):</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c1">Copy</button>
 <pre id="c1"><code>ssh jl4264@transfer-mccleary.ycrc.yale.edu
 # choose: 1  (Duo push)</code></pre>
-        </div>
-        <ol start="2"><li>Navigate and find the session directory:</li></ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c2">Copy</button>
+            </div>
+
+            <ol start="2">
+              <li>Navigate and find the session directory:</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c2">Copy</button>
 <pre id="c2"><code>cd /gpfs/gibbs/pi/cryoem/GlaciosYSB/
 ls</code></pre>
-        </div>
-        <ol start="3"><li>Transfer the whole directory to OneDrive:</li></ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c3">Copy</button>
+            </div>
+
+            <ol start="3">
+              <li>Transfer the whole directory to OneDrive:</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c3">Copy</button>
 <pre id="c3"><code>scp -r 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/20251012_JL' \
 "/Users/thatjiaze/Library/CloudStorage/OneDrive-YaleUniversity/Ferguson Lab/WOP/251012 screening on FL-EGFR TGFa 13A9 ligand at 1_2x excess/"</code></pre>
-        </div>
-        <p class="note">Tip: for huge trees use <code>rsync -av --partial --progress</code> instead of <code>scp</code>.</p>
-      </section>
+            </div>
 
-      <section id="on-scope-transfer">
-        <h2>Cryo-EM Collection → External Drive (workstation)</h2>
-        <ol>
-          <li>Eject previous drive; mount new drive and format as <strong>Ext4</strong>.</li>
-          <li>SSH to the workstation:</li>
-        </ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c4">Copy</button>
+            <p class="note">
+              Tip: for huge trees use <code>rsync -av --partial --progress</code> instead of <code>scp</code>.
+            </p>
+          </section>
+
+          <!-- COLLECTION → DRIVE PANEL -->
+          <section id="on-scope-transfer" class="tab-panel">
+            <h2>Cryo-EM Collection → External Drive (workstation)</h2>
+
+            <ol>
+              <li>Eject previous drive; mount new drive and format as <strong>Ext4</strong>.</li>
+              <li>SSH to the workstation:</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c4">Copy</button>
 <pre id="c4"><code>ssh spuser@10.26.0.125
 # password: &lt;YOUR_PASSWORD&gt;</code></pre>
-        </div>
-        <ol start="3"><li>Go to the mounted drive (last segment varies):</li></ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c5">Copy</button>
+            </div>
+
+            <ol start="3">
+              <li>Go to the mounted drive (last segment varies):</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c5">Copy</button>
 <pre id="c5"><code>cd /
 cd media/spuser/jiaze-01/</code></pre>
-        </div>
-        <ol start="4"><li>Create session folder and pull from cluster:</li></ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c6">Copy</button>
+            </div>
+
+            <ol start="4">
+              <li>Create session folder and pull from cluster:</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c6">Copy</button>
 <pre id="c6"><code>mkdir flEGFR_13A9_1_2xTGFa
 cd flEGFR_13A9_1_2xTGFa/
 
 # Retrieve raw TIFFs:
 rsync -av --progress --size-only mccleary:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/rawTIFF/* ./</code></pre>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      <section id="gainref">
-        <h2>Gain Reference: Download → Convert → Push</h2>
-        <ol><li>Create temp folder and download all <code>.dm4</code> gainrefs:</li></ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c7">Copy</button>
+          <!-- GAIN REF PANEL -->
+          <section id="gainref" class="tab-panel">
+            <h2>Gain Reference: Download → Convert → Push</h2>
+
+            <ol>
+              <li>Create temp folder and download all <code>.dm4</code> gainrefs:</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c7">Copy</button>
 <pre id="c7"><code>mkdir -p ~/Downloads/temp
 scp 'jl4264@transfer-mccleary.ycrc.yale.edu:/gpfs/gibbs/pi/cryoem/GlaciosYSB/251012_JL/data_collection/rawTIFF/*.dm4' \
   ~/Downloads/temp/</code></pre>
-        </div>
-        <ol start="2"><li>Convert a specific <code>.dm4</code> to <code>.mrc</code> (IMOD):</li></ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c8">Copy</button>
+            </div>
+
+            <ol start="2">
+              <li>Convert a specific <code>.dm4</code> to <code>.mrc</code> (IMOD):</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c8">Copy</button>
 <pre id="c8"><code>dm2mrc ~/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.dm4 \
        ~/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.mrc</code></pre>
-        </div>
-        <ol start="3"><li>Send the converted file to the workstation:</li></ol>
-        <div class="codewrap">
-          <button class="copy" data-copy="#c9">Copy</button>
+            </div>
+
+            <ol start="3">
+              <li>Send the converted file to the workstation:</li>
+            </ol>
+            <div class="codewrap">
+              <button class="copy" data-copy="#c9">Copy</button>
 <pre id="c9"><code>rsync -av --progress --partial \
   "/Users/thatjiaze/Downloads/SuperRef_flegfr_13a9_TGFa_1_2x_52_00001_15.59.50.mrc" \
   spuser@10.26.0.125:/data/cryosparc_project/CS-jiaze-fl-egfr-gfp-negativestain/</code></pre>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      <section>
-        <h2>Prerequisites &amp; Notes</h2>
-        <ul>
-          <li>Have <strong>ssh/scp/rsync</strong> and <strong>IMOD</strong> (<code>dm2mrc</code>) installed.</li>
-          <li>Edit paths/session names per run.</li>
-          <li class="warn">Never publish real passwords on the web.</li>
-        </ul>
-      </section>
+          <!-- PREREQS PANEL -->
+          <section id="prereqs-notes" class="tab-panel">
+            <h2>Prerequisites &amp; Notes</h2>
+            <ul>
+              <li>Have <strong>ssh/scp/rsync</strong> and <strong>IMOD</strong> (<code>dm2mrc</code>) installed.</li>
+              <li>Edit paths/session names per run.</li>
+              <li class="warn">Never publish real passwords on the web.</li>
+            </ul>
+          </section>
+
+        </div><!-- /.tab-panels -->
+      </div><!-- /.tabs-layout -->
     </main>
 
     <footer>© <span id="y"></span> Jiaze Liu • Personal quick-reference.</footer>
