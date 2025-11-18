@@ -171,3 +171,14 @@ code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",
     white-space: normal;
   }
 }
+#c9 {
+  max-width: 100%;      /* don’t overflow the page */
+  overflow-x: auto;     /* show horizontal scrollbar when needed */
+  white-space: pre;     /* keep line breaks + don’t wrap long lines */
+}
+
+#c3 {
+  max-width: 100%;      /* don’t overflow the page */
+  overflow-x: auto;     /* show horizontal scrollbar when needed */
+  white-space: pre;     /* keep line breaks + don’t wrap long lines */
+}
