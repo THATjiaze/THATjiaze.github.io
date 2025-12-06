@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Protocol – SPA Sample Screening &amp; Data Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="protocol.css">
+</head>
+<body>
+	  <!-- PASSWORD OVERLAY -->
+  <div id="passwordOverlay" class="password-overlay">
+    <div class="password-card">
+      <h1 class="password-title">Protocol access</h1>
+      <p class="password-text">
+        This page is for internal lab use only. Please enter the access password.
+      </p>
+      <form id="passwordForm" class="password-form">
+        <label for="passwordInput" class="password-label">
+          Password
+        </label>
+        <input
+          type="password"
+          id="passwordInput"
+          class="password-input"
+          autocomplete="current-password"
+          required
+        />
+        <div class="password-error" id="passwordError" aria-live="polite"></div>
+        <button type="submit" class="password-button">
+          Unlock
+        </button>
+      </form>
+      <p class="password-hint">
+        Hint: change the password in <span class="mono">protocol.js</span>.
+      </p>
+    </div>
+  </div>
+	
+	
+<div class="app-shell" id="appShell" aria-hidden="true">
+  <header>
+    <div class="brand">
+      <div class="brand-title">Protocol · SerialEM · Glacios · K3</div>
+      <div class="brand-subtitle">
+        Interactive checklist for <span class="mono">SPA sample screening &amp; data collection</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="tag">
+        <span class="tag-dot green"></span>
+        <span>Session status: tracking enabled</span>
+      </div>
+      <div class="tag">
+        <span class="tag-dot"></span>
+        <span>Progress saved in this browser</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: SECTIONS -->
+    <aside class="panel nav-panel">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span class="icon">§</span>
+            Sections
+          </div>
+          <button class="reset-btn" id="resetProgressBtn" type="button">
+            ⟳ Reset
+          </button>
+        </div>
+        <div class="panel-meta">
+          <span class="pill">Click bullets to mark steps done</span>
+        </div>
+        <ul class="section-list" id="sectionList"></ul>
+      </div>
+    </aside>
+
+    <!-- CENTER: MAIN PROTOCOL -->
+    <section class="panel main-panel">
+  <div class="panel-inner">
+    <div class="panel-header">
+      <div class="panel-title">
+        <span class="icon">✓</span>
+        Protocol
+      </div>
+      <div class="panel-meta">
+        <span class="pill">SPA · SerialEM · Glacios · K3</span>
+      </div>
+    </div>
+
+    <!-- NEW: sticky header wrapper for title + search + progress -->
+    <div class="main-sticky-header">
+      <div id="protocolHeader" class="protocol-header"></div>
+
+      <!-- Search bar -->
+      <div class="search-row">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search within current section…"
+            autocomplete="off"
+          />
+          <button id="searchClear" class="search-clear" type="button" aria-label="Clear search">✕</button>
+        </div>
+        <div class="search-hint">
+          Filter steps; matches are highlighted.
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-bar-wrapper">
+        <div class="progress-bar">
+          <div class="progress-fill" id="overallProgressFill"></div>
+        </div>
+        <div class="progress-label" id="overallProgressLabel">0 / 0</div>
+      </div>
+    </div>
+
+    <!-- Bullet list stays below the sticky header -->
+    <ul class="bullet-list" id="bulletListRoot"></ul>
+  </div>
+</section>
+
+    <!-- RIGHT: IMPORTANT HIGHLIGHTS -->
+    <aside class="panel highlight-panel">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span class="icon">!</span>
+            Important functions
+          </div>
+        </div>
+        <div class="panel-meta">
+          <span class="pill">Manually tagged as “Important” in the data</span>
+        </div>
+        <ul class="highlight-list" id="highlightList"></ul>
+        <div class="highlight-empty" id="highlightEmpty">
+          No items marked as important yet in this section.
+        </div>
+        <div class="highlight-tip">
+          Tip: in the code, set <span class="mono">important: true</span> on any step that you want to show here.
+        </div>
+      </div>
+    </aside>
+  </main>
+	<footer class="site-footer">
+    <div class="site-footer-left">
+      © 2025 Jiaze Liu
+    </div>
+    <div class="site-footer-right">
+      Last edited: December 4, 2025
+    </div>
+  </footer>
+</div>
+
+<script src="protocol.js"></script>
+</body>
+</html>
